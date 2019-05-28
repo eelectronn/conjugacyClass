@@ -1,7 +1,8 @@
 import operation
+import time as t
+import math as m
 
-obj = operation.get_conj_class([3, 3, 3, 3])
-print(obj)
-
-used = [False]*7
-print(used)
+before = t.time_ns()
+obj = operation.get_conj_class([3, 3, 4])
+after = t.time_ns()
+print('%.20f' % ((after - before)*m.pow(10, -9)))
