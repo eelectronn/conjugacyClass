@@ -3,12 +3,32 @@ import operation
 
 a = sys.argv
 partition = []
+index = 1
+fileName = 'file.txt'
+output = 'cycle'
+count = False
 
-output = 'pattern'
+# print(a)
 
-for i in range(1, len(a)-1):
-    partition.append(int(a[i]))
+for i in range(1, len(a)):
+    if a[i].isdigit():
+        partition.append(int(a[i]))
+    else:
+        index = i
+        break
 
-f = open(a[len(a)-1], 'wt')
+if index < len(a) and index != 1:
+    fileName = a[index]
+    index += 1
 
-operation.get_conj_class(partition, f, output)
+if index < len(a) and index != 1:
+    output = a[index]
+    index += 1
+
+if index < len(a):
+    if a[index] == 'y' and index != 1:
+        count = True
+
+f = open(fileName, 'wt')
+
+operation.get_conj_class(partition, f, output, count)
